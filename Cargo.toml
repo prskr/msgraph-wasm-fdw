@@ -1,0 +1,29 @@
+[package]
+name = "msgraph_fdw"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[profile.release]
+strip = "debuginfo"
+lto = true
+
+[dependencies]
+wit-bindgen-rt = "0.26.0"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+serde_urlencoded = "0.7.1"
+querystring = "1.1.0"
+
+[package.metadata.component]
+package = "prskr:msgraph-fdw"
+
+[package.metadata.component.dependencies]
+
+[package.metadata.component.target]
+path = "wit"
+
+[package.metadata.component.target.dependencies]
+"supabase:wrappers" = { path = "./supabase-wrappers-wit" }
